@@ -30,6 +30,8 @@ function getWeather(city) {
       return res.json();
     })
     .then(function (data) {
+      moment.unix(1633290639).format('L')
+      console.log(moment.unix(data.dt).format('L'))
       console.log(data);
       currentWeather(data, city)
       var lat = data.coord.lat
@@ -85,11 +87,14 @@ function currentWeather(data, city, uviResponse) {
   const wind = document.getElementById("wind");
   const humidity = document.getElementById("humidity");
   const cityName = document.getElementById("the-city");
+  const date = moment.unix(data.dt).format('L');
+  const iconCity = document.getElementById("day-icon");
   console.log("second uvi response:", uviResponse)
   temperature.textContent = data.main.temp;
   humidity.textContent = data.main.humidity;
   cityName.innerHTML = ""
-  cityName.textContent = cityName.textContent + ": " + city
+  cityName.textContent = cityName.textContent + ": " + city + " (" + date + ")";
+  iconCity.setAttribute('src', 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png')
   wind.textContent = data.wind.speed;
   // UV.textContent = data
   console.log("data returned:", data)
@@ -106,6 +111,7 @@ function fiveDayWeather(data) {
   const humidity1 = document.getElementById("humidity-a");
   const wind1 = document.getElementById("wind-a");
   const iconDay1 = document.getElementById("simbol-a")
+
 
   humidity1.textContent = day1.humidity;
   temptA.textContent = day1.temp.max;
