@@ -17,7 +17,7 @@ search.addEventListener("click", function (event) {
     alert("please add a city");
   } else {
     getWeather(searchCityVal)
-  console.log(searchCityVal);
+    console.log(searchCityVal);
   }
 
 });
@@ -39,26 +39,27 @@ function getWeather(city) {
         .then(function (res) {
           return res.json();
         })
-        .then(function(response) {
+        .then(function (response) {
           console.log("uvi response:", response.current.uvi);
           fiveDayWeather(response.daily.slice(1, 6))
-          let uviResponse =response.current.uvi
+          let uviResponse = response.current.uvi
           const UV = document.getElementById("uvi");
           UV.innerHTML = ""
-       if (uviResponse <= 2.99){
-         console.log('green')
-         UV.style.backgroundColor= "green"
-       }
-        if(3 < uviResponse <7.99 ){
-         UV.style.backgroundColor="yellow"
-         UV.style.color="black"
-       } 
-       if (uviResponse >8 ){
-        UV.style.backgroundColor = "red"
-        UV.style.color = "aliceblue"
-       }
-         UV.append(uviResponse)
-         
+          if (uviResponse <= 2.99) {
+            console.log('green')
+            UV.style.backgroundColor = "green"
+          }
+          else if (uviResponse < 8) {
+            UV.style.backgroundColor = "yellow"
+            console.log('yellow')
+            UV.style.color = "black"
+          }
+          else if (uviResponse >= 8) {
+            UV.style.backgroundColor = "red"
+            UV.style.color = "aliceblue"
+          }
+          UV.append(uviResponse)
+
         }
         )
 
@@ -84,69 +85,86 @@ function currentWeather(data, city, uviResponse) {
   const wind = document.getElementById("wind");
   const humidity = document.getElementById("humidity");
   const cityName = document.getElementById("the-city");
-console.log("second uvi response:", uviResponse)
+  console.log("second uvi response:", uviResponse)
   temperature.textContent = data.main.temp;
   humidity.textContent = data.main.humidity;
-  cityName.innerHTML=""
+  cityName.innerHTML = ""
   cityName.textContent = cityName.textContent + ": " + city
   wind.textContent = data.wind.speed;
   // UV.textContent = data
   console.log("data returned:", data)
   console.log("city returned:", city)
- 
+
 
 }
 
 // function to display 5 day forecast
 function fiveDayWeather(data) {
   const day1 = data[0];
-  console.log("day1:",day1)
+  console.log("day1:", day1.weather[0].icon)
   const temptA = document.getElementById("tempt-a");
   const humidity1 = document.getElementById("humidity-a");
-    const wind1 = document.getElementById("wind-a");
-// const iconDay1 = document.getElementById("simbol-a")
+  const wind1 = document.getElementById("wind-a");
+  const iconDay1 = document.getElementById("simbol-a")
 
   humidity1.textContent = day1.humidity;
   temptA.textContent = day1.temp.max;
-     wind1.textContent = day1.wind_speed;
-    //  iconDay1.append = 
+  wind1.textContent = day1.wind_speed;
+  iconDay1.setAttribute('src', 'http://openweathermap.org/img/w/' + day1.weather[0].icon + '.png')
 
 
   const day2 = data[1];
+  console.log("day2:", day2.weather[0].icon)
   const temptB = document.getElementById("tempt-b");
   const humidity2 = document.getElementById("humidity-b");
-   const wind2 = document.getElementById("wind-b");
+  const wind2 = document.getElementById("wind-b");
+  const iconDay2 = document.getElementById("simbol-b")
 
   humidity2.textContent = day2.humidity;
-   wind2.textContent = day2.wind_speed;
+  wind2.textContent = day2.wind_speed;
   temptB.textContent = day2.temp.max;
-  
+  iconDay2.setAttribute('src', 'http://openweathermap.org/img/w/' + day2.weather[0].icon + '.png')
+
+
   const day3 = data[2];
+  console.log("day3:", day3.weather[0].icon)
   const temptc = document.getElementById("tempt-c");
   const humidity3 = document.getElementById("humidity-c");
-   const wind3 = document.getElementById("wind-c");
+  const wind3 = document.getElementById("wind-c");
+  const iconDay3 = document.getElementById("simbol-c")
 
   humidity3.textContent = day3.humidity;
-   wind3.textContent = day3.wind_speed;
+  wind3.textContent = day3.wind_speed;
   temptc.textContent = day3.temp.max;
+  iconDay3.setAttribute('src', 'http://openweathermap.org/img/w/' + day3.weather[0].icon + '.png')
+
 
   const day4 = data[3];
+  console.log("day4:", day4.weather[0].icon)
   const temptd = document.getElementById("tempt-d");
   const humidity4 = document.getElementById("humidity-d");
-   const wind4 = document.getElementById("wind-d");
+  const wind4 = document.getElementById("wind-d");
+  const iconDay4 = document.getElementById("simbol-d")
+
 
   humidity4.textContent = day4.humidity;
-   wind4.textContent = day4.wind_speed;
+  wind4.textContent = day4.wind_speed;
   temptd.textContent = day4.temp.max;
+  iconDay4.setAttribute('src', 'http://openweathermap.org/img/w/' + day4.weather[0].icon + '.png')
+
 
   const day5 = data[4];
+  console.log("day5:", day5.weather[0].icon)
   const temptE = document.getElementById("tempt-e");
   const humidity5 = document.getElementById("humidity-e");
-   const wind5 = document.getElementById("wind-e");
-  
+  const wind5 = document.getElementById("wind-e");
+  const iconDay5 = document.getElementById("simbol-e")
+
   humidity5.textContent = day5.humidity;
-   wind5.textContent = day5.wind_speed;
+  wind5.textContent = day5.wind_speed;
   temptE.textContent = day5.temp.max;
+  iconDay5.setAttribute('src', 'http://openweathermap.org/img/w/' + day5.weather[0].icon + '.png')
+
 }
 
 
