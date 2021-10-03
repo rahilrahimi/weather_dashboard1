@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="p-3 mb-2 bg-primary text-white text-center">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <main class="row p-3 p-md-4">
+        <div class="col-4">
+            <!--search for city -->
+            <form>
+                <label for="search">Search for a city:</label>
+                <div class="form-row">
+                    <input id="search-city" class="form-control" name="city" placeholder="Search for a city"></input>
+                    <!-- <button id="search-button" class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button> -->
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="search">Search</button>
+                </div>
+            </form>
+            <!-- list recent cities -->
+            <div class="card bg-color-light mt-4" id="recent-search"></div>
+        </div>
+        <div class="col-8">
+            <!-- city current forcast-->
+            <div class="card bg-color-light mt-4 mt-md-0">
+                <h3 class="card-header bg-secondary text-light">Today's Forecast</h3>
+                <div class="container">
+                    <div class="row">
+                        <h4 class="ml-2">
+                            <img class="weather-icon" id="day-icon" />
+                            <span class="align-middle" id="the-city">City Name</span>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="pl-3">Current Temperature: <span id="tempt"></span> &deg;F</p>
+                            <p class="pl-3">Wind: <span id="wind"></span> MPH</p>
+                            <p class="pl-3">UV Index: <span id="uvi"></span></p>
+                            <p class="pl-3">Humidity: <span id="humidity"></span>%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- city five day forecast -->
+            <div class="card bg-color-light mt-4">
+                <h3 class="card header bg-secondary text-light">Five Day Forecast</h3>
+                <div class="container p-3">
+                    <div class="row row-cols-1 row-cols-md-5">
+                        <!--day 1-->
+                        <div class="col">
+                            <div class="card p-3 mb-2 bg-primary text-white">
+                                <p class="card-text" id="day-first"></p>
+                                <h4 class="align-middle">
+                                    <img class="weather-icon" id="simbol-a">
+                                    <span id="tempt-a"></span> &deg;F
+                                </h4>
+                                <p class="mb-2">Wind: <span id="wind-a"></span> MPH</p>
+                                <p class="mb-2">Humidity: <span id="humidity-a"></span>%</p>
+                            </div>
+                        </div>
+                        <!--day 2-->
+                        <div class="col">
+                            <div class="card p-3 mb-2 bg-primary text-white">
+                                <p class="card-text" id="day-second"></p>
+                                <h4 class="align-middle">
+                                    <img class="weather-icon" id="simbol-b">
+                                    <span id="tempt-b"></span> &deg;F
+                                </h4>
+                                <p class="mb-2">Wind: <span id="wind-b"></span> MPH</p>
+                                <p class="mb-2">Humidity: <span id="humidity-b"></span>%</p>
+                            </div>
+                        </div>
+                        <!--day 3-->
+                        <div class="col">
+                            <div class="card p-3 mb-2 bg-primary text-white">
+                                <p class="card-text" id="day-third"></p>
+                                <h4 class="align-middle">
+                                    <img class="weather-icon" id="simbol-c">
+                                    <span id="tempt-c"></span> &deg;F
+                                </h4>
+                                <p class="mb-2">Wind: <span id="wind-c"></span> MPH</p>
+                                <p class="mb-2">Humidity: <span id="humidity-c"></span>%</p>
+                            </div>
+                        </div>
+                        <!--day 4-->
+                        <div class="col">
+                            <div class="card p-3 mb-2 bg-primary text-white">
+                                <p class="card-text" id="day-fourth"></p>
+                                <h4 class="align-middle">
+                                    <img class="weather-icon" id="simbol-d">
+                                    <span id="tempt-d"></span> &deg;F
+                                </h4>
+                                <p class="mb-2">Wind: <span id="wind-d"></span> MPH</p>
+                                <p class="mb-2">Humidity: <span id="humidity-d"></span>%</p>
+                            </div>
+                        </div>
+                        <!--day 5-->
+                        <div class="col">
+                            <div class="card p-3 mb-2 bg-primary text-white">
+                                <p class="card-text" id="day-fifth"></p>
+                                <h4 class="align-middle">
+                                    <img class="weather-icon" id="simbol-e">
+                                    <span id="tempt-e"></span> &deg;F
+                                </h4>
+                                <p class="mb-2">Wind: <span id="wind-e"></span> MPH</p>
+                                <p class="mb-2">Humidity: <span id="humidity-e"></span>%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/moment.min.js"></script> -->
+    <script src="script.js"></script>
+</body>
+
+</html>
