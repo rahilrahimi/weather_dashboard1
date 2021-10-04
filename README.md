@@ -33,5 +33,6 @@ Can see the weather for current day and for 5 day forecast
 https://rahilrahimi.github.io/weather_dashboard/
 # Mock-Up
 
+![Capt22](https://user-images.githubusercontent.com/87342751/135938461-e83f3359-8a6e-4396-9938-31faefc8aaef.png)
 
 
