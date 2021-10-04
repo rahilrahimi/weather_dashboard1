@@ -3,11 +3,10 @@
 var searchCityInput = document.getElementById("search-city");
 var searchButton = document.getElementById("search-button");
 var apiKey = "859703ec2c35d55d411c037402bef9ad";
-// var uvIndex= "https://api.openweathermap.org/data/2.5/uvi?appid={appid}&lat={lat}&lon={lon}";
-// var currentWeather= "https://api.openweathermap.org/data/2.5/weather?appid="
-// var weatherForecast= "https://api.openweathermap.org/data/2.5/forecast?4e5dbe7db2b5e9c8b47fa40b691443d5q={city name},{country code}";
+var recentSearch = JSON.parse(localStorage.getItem("search")) || [];
 
-
+var pastEl = document.getElementById("recent-search");
+var clearEl = document.getElementById("clear-search");
 
 
 search.addEventListener("click", function (event) {
@@ -18,9 +17,37 @@ search.addEventListener("click", function (event) {
   } else {
     getWeather(searchCityVal)
     console.log(searchCityVal);
+
+    recentSearch.push(searchCityVal);
+    localStorage.setItem("search", JSON.stringify(recentSearch));
+    renderRecentSearch();
   }
 
 });
+
+clearEl.addEventListener("click", function () {
+  localStorage.clear();
+  recentSearch = [];
+  renderRecentSearch();
+})
+function renderRecentSearch() {
+  pastEl.innerHTML = "";
+  for (let i = 0; i < recentSearch.length; i++) {
+    const historyItem = document.createElement("input");
+    historyItem.setAttribute("type", "text");
+    historyItem.setAttribute("readonly", true);
+    historyItem.setAttribute("class", "form-control d-block bg-white");
+    historyItem.setAttribute("value", recentSearch[i]);
+    historyItem.addEventListener("click", function () {
+      getWeather(historyItem.value);
+    })
+    pastEl.append(historyItem);
+  }
+}
+renderRecentSearch();
+if (recentSearch.length > 0) {
+  getWeather(recentSearch[recentSearch.length - 1]);
+}
 
 
 // my TA showed me how to use 
@@ -65,21 +92,9 @@ function getWeather(city) {
         }
         )
 
-      // $(document).ready(function(){})
     })
 }
-//Fetch data for the one call api, passing in the lat and lon variables to the api url
 
-
-
-
-
-
-// condtitional for icon
-
-// function handle search history (one that gets search history and one that places them in local storage)
-JSON.parse(localStorage.getItem("searchedItems"))
-JSON.parse(localStorage.getItem("city-result"));
 
 // function to render curent weather
 function currentWeather(data, city, uviResponse) {
@@ -110,9 +125,10 @@ function fiveDayWeather(data) {
   const temptA = document.getElementById("tempt-a");
   const humidity1 = document.getElementById("humidity-a");
   const wind1 = document.getElementById("wind-a");
-  const iconDay1 = document.getElementById("simbol-a")
+  const iconDay1 = document.getElementById("simbol-a");
+  const dateday1 = document.getElementById('day-first');
 
-
+  dateday1.textContent = moment.unix(day1.dt).format('L');
   humidity1.textContent = day1.humidity;
   temptA.textContent = day1.temp.max;
   wind1.textContent = day1.wind_speed;
@@ -124,8 +140,10 @@ function fiveDayWeather(data) {
   const temptB = document.getElementById("tempt-b");
   const humidity2 = document.getElementById("humidity-b");
   const wind2 = document.getElementById("wind-b");
-  const iconDay2 = document.getElementById("simbol-b")
+  const iconDay2 = document.getElementById("simbol-b");
+  const dateday2 = document.getElementById('day-second');
 
+  dateday2.textContent = moment.unix(day2.dt).format('L');
   humidity2.textContent = day2.humidity;
   wind2.textContent = day2.wind_speed;
   temptB.textContent = day2.temp.max;
@@ -137,8 +155,10 @@ function fiveDayWeather(data) {
   const temptc = document.getElementById("tempt-c");
   const humidity3 = document.getElementById("humidity-c");
   const wind3 = document.getElementById("wind-c");
-  const iconDay3 = document.getElementById("simbol-c")
+  const iconDay3 = document.getElementById("simbol-c");
+  const dateday3 = document.getElementById('day-third');
 
+  dateday3.textContent = moment.unix(day3.dt).format('L');
   humidity3.textContent = day3.humidity;
   wind3.textContent = day3.wind_speed;
   temptc.textContent = day3.temp.max;
@@ -150,9 +170,11 @@ function fiveDayWeather(data) {
   const temptd = document.getElementById("tempt-d");
   const humidity4 = document.getElementById("humidity-d");
   const wind4 = document.getElementById("wind-d");
-  const iconDay4 = document.getElementById("simbol-d")
+  const iconDay4 = document.getElementById("simbol-d");
+  const dateday4 = document.getElementById('day-fourth');
 
 
+  dateday4.textContent = moment.unix(day4.dt).format('L');
   humidity4.textContent = day4.humidity;
   wind4.textContent = day4.wind_speed;
   temptd.textContent = day4.temp.max;
@@ -164,8 +186,10 @@ function fiveDayWeather(data) {
   const temptE = document.getElementById("tempt-e");
   const humidity5 = document.getElementById("humidity-e");
   const wind5 = document.getElementById("wind-e");
-  const iconDay5 = document.getElementById("simbol-e")
+  const iconDay5 = document.getElementById("simbol-e");
+  const dateday5 = document.getElementById('day-fifth');
 
+  dateday5.textContent = moment.unix(day5.dt).format('L');
   humidity5.textContent = day5.humidity;
   wind5.textContent = day5.wind_speed;
   temptE.textContent = day5.temp.max;
