@@ -18,22 +18,21 @@
     </header>
     <main class="row p-3 p-md-4">
         <div class="col-4">
-            <!--search for city -->
+            <!--searching for a city to check the weather -->
             <form>
                 <label for="search">Search for a city:</label>
                 <div class="form-row">
                     <input id="search-city" class="form-control" name="city" placeholder="Search for a city"></input>
-                    <!-- <button id="search-button" class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button> -->
                     <button type="button" class="btn btn-primary btn-lg btn-block" id="search">Search</button>
                 </div>
             </form>
-            <!-- list recent cities -->
+            <!-- searched list  of cities -->
             <div class="card bg-color-light mt-4" id="recent-search"></div>
             <div class="card bg-color-light mt-4" id="clear-search"></div>
             
         </div>
         <div class="col-8">
-            <!-- city current forcast-->
+            <!-- today forecast for a city have been searched -->
             <div class="card bg-color-light mt-4 mt-md-0">
                 <h3 class="card-header bg-secondary text-light">Today's Forecast</h3>
                 <div class="container">
@@ -53,12 +52,12 @@
                     </div>
                 </div>
             </div>
-            <!-- city five day forecast -->
+            <!-- the 5 days forecast have been searched for a city -->
             <div class="card bg-color-light mt-4">
                 <h3 class="card header bg-secondary text-light">Five Day Forecast</h3>
                 <div class="container p-3">
                     <div class="row row-cols-1 row-cols-md-5">
-                        <!--day 1-->
+                        <!--day I FORECAST-->
                         <div class="col">
                             <div class="card p-3 mb-2 bg-primary text-white">
                                 <p class="card-text" id="day-first"></p>
@@ -70,7 +69,7 @@
                                 <p class="mb-2">Humidity: <span id="humidity-a"></span>%</p>
                             </div>
                         </div>
-                        <!--day 2-->
+                        <!--day II FORECAST-->
                         <div class="col">
                             <div class="card p-3 mb-2 bg-primary text-white">
                                 <p class="card-text" id="day-second"></p>
@@ -82,7 +81,7 @@
                                 <p class="mb-2">Humidity: <span id="humidity-b"></span>%</p>
                             </div>
                         </div>
-                        <!--day 3-->
+                        <!--day III FORECAST -->
                         <div class="col">
                             <div class="card p-3 mb-2 bg-primary text-white">
                                 <p class="card-text" id="day-third"></p>
@@ -94,7 +93,7 @@
                                 <p class="mb-2">Humidity: <span id="humidity-c"></span>%</p>
                             </div>
                         </div>
-                        <!--day 4-->
+                        <!--day IV FORECAST -->
                         <div class="col">
                             <div class="card p-3 mb-2 bg-primary text-white">
                                 <p class="card-text" id="day-fourth"></p>
@@ -106,7 +105,7 @@
                                 <p class="mb-2">Humidity: <span id="humidity-d"></span>%</p>
                             </div>
                         </div>
-                        <!--day 5-->
+                        <!--day V FORECAST -->
                         <div class="col">
                             <div class="card p-3 mb-2 bg-primary text-white">
                                 <p class="card-text" id="day-fifth"></p>
