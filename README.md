@@ -2,7 +2,22 @@
 It is a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 I used the OpenWeather One Call API (Links to an external site.) to retrieve weather data for cities. also i used JavaScript and momentjs.
 
-# Acceptance Criteria
+## Installation
+
+1. Download or clone repository
+2. Open the main page (index.html) on your browser to view
+3. Use a text editor to view all coding, Visual Studio Coding is recommended.
+
+## Features
+
+* HTML
+* CSS
+* Bootstrap
+* jQuery
+* Moment.js
+* Server-Side API - OpenWeather API
+
+# App Criteria
 GIVEN a weather dashboard with form inputs
 
 WHEN I search for a city

@@ -1,6 +1,7 @@
 
 
 var searchCityInput = document.getElementById("search-city");
+console.log(searchCityInput);
 var searchButton = document.getElementById("search-button");
 var apiKey = "859703ec2c35d55d411c037402bef9ad";
 var recentSearch = JSON.parse(localStorage.getItem("search")) || [];
@@ -12,6 +13,8 @@ var clearEl = document.getElementById("clear-search");
 search.addEventListener("click", function (event) {
   event.preventDefault();
   var searchCityVal = searchCityInput.value;
+  // console.log("LOOK HERE")
+  // console.log(searchCityVal);
   if (searchCityVal.length <= 0) {
     alert("please add a city");
   } else {
